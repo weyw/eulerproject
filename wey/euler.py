@@ -57,11 +57,34 @@ def lcm(x, y):
 def prime_sieve(n):
     ''' returns a list of "n" primes '''
 
+    primes = [5, 7, 13, 17, 19, 23, 29, 31, 37, 41,
+              43, 47, 53, 59, 61, 67, 71, 73, 79, 83,
+              89, 97]
     if n == 1:
         return [2]
     if n == 2:
         return [2, 3]
-    elif (n - 2)
-    primes = [5, 7, 13, 17, 19, 23, 29, 31, 37, 41,
-              43, 47, 53, 59, 61, 67, 71, 73, 79, 83,
-              89, 97]
+    elif n <= len(primes) + 2:
+        return [2, 3] + primes[:n - 2]
+    else:
+        n -= len(primes) + 1
+        cur = primes[-1]
+
+        primes = [3] + primes
+        while n > 1:
+            prime = True
+            cur += 2
+
+            for i in primes:
+                if i > math.floor(math.sqrt(cur)):
+                    if prime:
+                        primes.append(cur)
+                        n -= 1
+                    break
+                else:
+                    if cur % i == 0:
+                        prime = False
+                        break
+        return [2] + primes
+
+
