@@ -17,15 +17,18 @@ def run():
     cur_max = 0
     cur_num = ""
     m = 13
+    counter = 0
 
     for x in range(0, len(n) - m):
         total = 1
+        counter += 1
+        contains_zero = n.index("0")
         for i in n[x:x + m]:
             total *= int(i)
         if total > cur_max:
             cur_max = total
             cur_num = n[x:x + m]
 
-    print(cur_num, cur_max)
+    print(cur_num, cur_max, counter)
 
 print timeit.timeit(run, number=1)
