@@ -16,24 +16,25 @@ def run():
     c = 5
 
     count = 0
-
     found = False
 
-    while c < 500 or not found:
-        for a in range(4, 500):
-            for b in range(5, 500):
-                count += 1
+    f = lambda x: x * x
+    sq = map(f, range(0, t / 2 + 1))
+    b = t // 2
 
-                c = math.sqrt(a ** 2 + b ** 2)
-                if math.floor(c) == c:
-                    if a + b + c == 1000:
-                        found = True
-                        break
-
-            if found:
+    for a in range(1, t / 4):
+        while not found :
+            count += 1
+            c = (sq[a] + sq[b]) ** 0.5
+            d = a + b + c
+            if d > t :
+                b -= 1
+            elif d == t :
+                found = True
                 break
-
-        if found:
+            else :
+                break
+        if found :
             break
 
     print(a, b, c, a + b + c, a * b * c, count)
