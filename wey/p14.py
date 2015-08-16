@@ -15,25 +15,34 @@ def collatz(n):
     else:
         return 3 * n + 1
 
+class ChainCache:
+    def __init__(self):
+        self.cache = {}
+
+    def __call__(self, n):
+        if n == 1:
+            return 1
+        elif n in self.cache:
+            return self.cache[n]
+        else:
+            c = self.__call__(collatz(n))
+            self.cache[n] = c + 1
+            return c + 1
+
 def run():
-    n = 13
-    max_chain = 0
-    cur_chain = 0
-    cur_starting_num = 3
-    max_starting_num = 0
 
-    for cur_starting_num in range(3, 1000000) :
-        n = cur_starting_num
-        cur_chain = 0
+    chainlen = ChainCache()
+    n = 1000000
 
-        while n > 1 :
-            cur_chain += 1
-            if cur_chain > max_chain :
-                max_chain = cur_chain
-                max_starting_num = cur_starting_num
-            n = collatz(n)
+    m = 0
+    v = 0
+    for i in range(1, n):
+        l = chainlen(i)
+        if l > m:
+            m = l
+            v = i
+    print(v, m)
 
-    print(max_starting_num, max_chain)
 
 
 print timeit.timeit(run, number=1)
