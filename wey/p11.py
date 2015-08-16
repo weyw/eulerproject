@@ -1,7 +1,7 @@
 '''
-https://projecteuler.net/problem=11
+https://projecteuler.net/problem=12
 
-=
+= 70600674
 '''
 
 import timeit

@@ -94,3 +94,8 @@ def prime_sieve(n):
             sieve[       k*k/3     ::2*k] = False
             sieve[k*(k-2*(i&1)+4)/3::2*k] = False
     return numpy.r_[2,3,((3*numpy.nonzero(sieve)[0][1:]+1)|1)]
+
+def factors(n) :
+    ''' return all factors for n '''
+
+    return set(reduce(list.__add__, ([i, n // i] for i in range(1, int(math.floor(math.sqrt(n))) + 1) if n % i == 0)))
