@@ -1,4 +1,5 @@
 import math
+import numpy
 
 def is_prime(m):
     ''' returns True if "m" is prime '''
@@ -54,37 +55,42 @@ def lcm(x, y):
     return (x * y) // gcd(x, y)
 
 
+def prime_sieve2(n):
+
+    primes = [True] * (n + 1)
+
+    primes[0] = False
+    primes[1] = False
+
+    for i in range(4, n):
+        if primes[i]:
+            if i % 2 == 0 or i % 3 == 0 :
+                primes[i] = False
+                continue
+
+            j = i * i
+            while j < n + 1:
+                primes[j] = False
+                j += i
+
+    result = []
+    for i in range(len(primes)):
+        if primes[i]:
+            result.append(i)
+
+    return result
+
 def prime_sieve(n):
-    ''' returns a list of "n" primes '''
+    """ Input n>=6, Returns a array of primes, 2 <= p < n """
 
-    primes = [5, 7, 13, 17, 19, 23, 29, 31, 37, 41,
-              43, 47, 53, 59, 61, 67, 71, 73, 79, 83,
-              89, 97]
-    if n == 1:
-        return [2]
-    if n == 2:
-        return [2, 3]
-    elif n <= len(primes) + 2:
-        return [2, 3] + primes[:n - 2]
-    else:
-        n -= len(primes) + 1
-        cur = primes[-1]
+    if n < 6 :
+        primes = [2, 3, 5, 7, 13, 17]
+        return primes[:n]
 
-        primes = [3] + primes
-        while n > 1:
-            prime = True
-            cur += 2
-
-            for i in primes:
-                if i > math.floor(math.sqrt(cur)):
-                    if prime:
-                        primes.append(cur)
-                        n -= 1
-                    break
-                else:
-                    if cur % i == 0:
-                        prime = False
-                        break
-        return [2] + primes
-
-
+    sieve = numpy.ones(n/3 + (n%6==2), dtype=numpy.bool)
+    for i in xrange(1,int(n**0.5)/3+1):
+        if sieve[i]:
+            k=3*i+1|1
+            sieve[       k*k/3     ::2*k] = False
+            sieve[k*(k-2*(i&1)+4)/3::2*k] = False
+    return numpy.r_[2,3,((3*numpy.nonzero(sieve)[0][1:]+1)|1)]

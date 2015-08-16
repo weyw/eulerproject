@@ -13,7 +13,7 @@ def run():
     n = 2000000
     f = lambda x, y: x + y
 
-    print(reduce(f, filter(is_prime, range(2, n))))
+    print(sum(prime_sieve2(n)))
 
 
 
