@@ -1,7 +1,7 @@
 '''
 https://projecteuler.net/problem=16
 
-= 137846528820
+= 1366
 '''
 
 import timeit
@@ -13,9 +13,12 @@ from euler import *
 
 
 def run():
-    r = 20
+    # n = 15
+    n = 1000
+    i = 2 ** n
+    q = list(str(i))
 
-    print (math.factorial(2 * r) / (math.factorial(r) ** 2))
+    print (q, sum(map(int, q)))
 
 
 
