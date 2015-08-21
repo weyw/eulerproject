@@ -12,7 +12,7 @@ As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the smallest numb
 
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 
-=
+= 4179871
 '''
 
 import timeit
@@ -21,29 +21,21 @@ import sys
 import datetime
 from euler import *
 
+def isSumOfTwoAbundants( n, abundants ) :
+    return any( (n-a in abundants) for a in abundants )
 
 def run():
-    file_name = "p022_names.txt"
-    names = []
-    with open(file_name) as f:
-        for line in f:
-            names = line.split(",")
-    #'''
-
-    names.sort()
-    place = 1
+    abundants = set()
     total = 0
-    for n in names :
-        worth = 0
 
-        print n
-        for letter in list(n):
-            if ord(letter) != ord('"'):
-                worth += (ord(letter) - 64)
-        total += place * worth
-        place += 1
+    for n in range( 1, 28124 ) :
+        if sum(factors(n)[:-1]) > n :
+            abundants.add( n )
+        if not isSumOfTwoAbundants( n, abundants ) :
+            total += n
 
     print total
+
 
 
 # '''
