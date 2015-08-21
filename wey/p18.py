@@ -1,7 +1,7 @@
 '''
 https://projecteuler.net/problem=18
 
-=
+= 1074
 '''
 
 import timeit
@@ -22,11 +22,8 @@ def run():
     i = height - 2
     while i >= 0 :
         for j in range(len(rows[i])) :
+            rows[i][j] += max(rows[i + 1][j], rows[i + 1][j + 1])
 
-            if rows[i + 1][j] > rows[i + 1][j + 1]:
-                rows[i][j] += rows[i + 1][j]
-            else :
-                rows[i][j] += rows[i + 1][j + 1]
         i -= 1
 
     print rows[0][0]
