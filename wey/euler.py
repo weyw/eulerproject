@@ -96,6 +96,6 @@ def prime_sieve(n):
     return numpy.r_[2,3,((3*numpy.nonzero(sieve)[0][1:]+1)|1)]
 
 def factors(n) :
-    ''' return all factors for n '''
+    ''' return list of all factors for n '''
 
-    return set(reduce(list.__add__, ([i, n // i] for i in range(1, int(math.floor(math.sqrt(n))) + 1) if n % i == 0)))
+    return reduce(list.__add__, ([i, n // i] for i in range(1, int(math.floor(math.sqrt(n))) + 1) if n % i == 0))
