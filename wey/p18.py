@@ -9,16 +9,6 @@ import math
 import sys
 from euler import *
 
-# define a recursive function to create partial sums by row
-def recSumAtRow(rowData, rowNum):
-    # iterate over the given row
-    for i in range(len(rowData[rowNum])):
-        # add the largest of the values below-left or below-right
-        rowData[rowNum][i] += max([rowData[rowNum+1][i],rowData[rowNum+1][i+1]])
-    # base case
-    if len(rowData[rowNum])==1: return rowData[rowNum][0]
-    # recursive case
-    else: return recSumAtRow(rowData, rowNum-1)
 
 def run():
     file_name = "p18.txt"
@@ -28,8 +18,18 @@ def run():
         for line in f:
             rows.append([int(i) for i in line.rstrip('\n').split(" ")])
 
-    result = recSumAtRow(rows, len(rows)-2) # start at second to last row
-    print (result)
+    height = len(rows)
+    i = height - 2
+    while i >= 0 :
+        for j in range(len(rows[i])) :
+
+            if rows[i + 1][j] > rows[i + 1][j + 1]:
+                rows[i][j] += rows[i + 1][j]
+            else :
+                rows[i][j] += rows[i + 1][j + 1]
+        i -= 1
+
+    print rows[0][0]
 
 
 
