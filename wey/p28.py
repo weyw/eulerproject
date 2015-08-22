@@ -26,14 +26,12 @@ from euler import *
 
 start_time = time.clock()
 
-n = 1001
-# n = 5
+m = 1001
+# m = 5
 
-total = 1
-for i in range(3, n + 1, 2):
-    total += 4 * i ** 2 - 6 * i + 6
+n = (m - 1) / 2
 
-print total
+print 1 + 4 * ((2 * n - 1) * 2 * n * (2 * n + 1) / 6) + 20 * (n * (n + 1) / 2)
 # '''
 print time.clock() - start_time
 
