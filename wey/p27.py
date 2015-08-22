@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-https://projecteuler.net/problem=27
+https://projecteuler.net/problem=28
 
 Euler discovered the remarkable quadratic formula:
 
@@ -34,11 +34,11 @@ a_max = 0
 b_max = 0
 n_max = 0
 L = [False] * 751000
-P = prime_sieve(751000)
+P = prime_sieve(1000)
 for p in P:
     L[p] = True
 
-for a in range(-1000, 1000):
+for a in range(-1001, 1000, 2):
     for b in range(1, 1000):
         # print a, b
 
