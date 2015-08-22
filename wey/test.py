@@ -3,4 +3,4 @@
 
 from euler import *
 
-print sum(factors(12)[:-1])
+print is_prime(647)
