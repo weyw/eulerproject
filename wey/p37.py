@@ -26,8 +26,11 @@ primes_list = prime_sieve(n)
 primes_set = set(primes_list)
 
 total = set()
+
 for p in primes_list:
     ps = str(p)
+    if len(total) == 11:
+        break
     if p > 11:
         all_prime = True
         for i in range(1, len(ps)):
