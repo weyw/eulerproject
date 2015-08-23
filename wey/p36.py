@@ -2,15 +2,15 @@
 # -*- coding: utf-8 -*-
 
 '''
-https://projecteuler.net/problem=35
+https://projecteuler.net/problem=36
 
-The number, 197, is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime.
+The decimal number, 585 = 10010010012 (binary), is palindromic in both bases.
 
-There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97.
+Find the sum of all numbers, less than one million, which are palindromic in base 10 and base 2.
 
-How many circular primes are there below one million?
+(Please note that the palindromic number, in either base, may not include leading zeros.)
 
-= 55
+=
 '''
 
 import time
@@ -18,30 +18,47 @@ import math
 import sys
 from euler import *
 
-import itertools
+def is_palindromic(n):
+    a = str(n)
+    p = len(a)
+    if p % 2 == 0:
+        p = p / 2
+    else:
+        p = p // 2 + 1
+
+    left = a[:p]
+    right = a[-1 * p:]
+    if left != right[::-1]:
+        return False
+
+    b = bin(n)[2:]
+    p = len(b)
+    if p % 2 == 0:
+        p = p / 2
+    else:
+        p = p // 2 + 1
+
+    left = b[:p]
+    right = b[-1 * p:]
+    if left != right[::-1]:
+        return False
+
+    return True
+
 start_time = time.clock()
 ''' '''
+n = 1000000
+n = 1000
 
-n = 1000100
-prime_list = prime_sieve(n)
-prime_set = set(prime_list)
-count = set()
-for p in prime_list:
-    if p > 1000000:
-        break
-    circular = True
+total = 0
 
-    c = str(p)
-    for i in range(len(c) - 1):
-        c = c[1:] + c[:1]
-        if int(c) not in prime_set:
-            circular = False
-            break
+for i in range(1, 1000000):
+    if is_palindromic(i):
+        total += i
 
-    if circular :
-        count.add(p)
+print total
 
-print len(count)
+
 
 # '''
 print time.clock() - start_time
