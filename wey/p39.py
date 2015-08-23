@@ -24,18 +24,35 @@ start_time = time.clock()
 
 max_count = 0
 max_p = 0
-for p in range(120, 1000):
-    count = 0
-    for a in range(1, p):
-        for b in range(1, p - a):
-            c = math.sqrt(a ** 2 + b ** 2)
 
-            if a + b + c == p:
-                count += 1
+p = [0] * 1000
 
-    if count > max_count:
-        max_count = count
-        max_p = p
+for i in range(1, 1000, 2):
+    for z in range(i + 1, 1000):
+        n = 4 * z ** 2 + 2 * z * i;
+        if n > 999:
+            break
+        for m in range(n, 1000, n):
+            if m > 999:
+                break
+            p[m] += 1
+
+for i in range(1000):
+    if p[i] > max_count:
+        max_count = p[i]
+        max_p = i
+
+
+# for p in range(2, 1000, 2):
+#     count = 0
+#     for a in range(p / 4):
+#         for b in range(a + 1, (p - a) / 2):
+#             if a + b + math.sqrt(a ** 2 + b **2) == p:
+#                 count += 1
+
+#     if count > max_count:
+#         max_count = count
+#         max_p = p
 
 print max_count, max_p
 
