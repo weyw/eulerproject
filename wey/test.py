@@ -6,7 +6,7 @@ from euler import *
 
 start_time = time.clock()
 
-print sum(set([(x  * y) for x in range(2,60) for y in range(123,10000//x) if (len(set(str(x) + str(y) + str(x * y)) - set('0')) == 9) ]))
-
+p = 13
+print int(float(p) / 10) + (p % 10) * 10 ** (len(str(p)) - 1)
 
 print time.clock() - start_time
