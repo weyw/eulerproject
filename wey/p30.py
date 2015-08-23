@@ -26,21 +26,25 @@ from euler import *
 
 start_time = time.clock()
 
-total = 0
+c=0
+for q in range (10):
+  for w in range (q + 1):
+    for e in range (w + 1):
+      for r in range (e + 1):
+         for t in range (r + 1):
+            for y in range (t + 1):
+                v= (q**5 + w**5+e**5+r**5+t**5+y**5)
 
-for a in range(10) :
-    for b in range(10) :
-        for c in range(10) :
-            for d in range(10) :
-                for e in range(10) :
-                    for f in range(10) :
-                        l = [a, b, c, d, e, f]
-                        sumd = sum(map(lambda x: x ** 5, l))
-                        if sumd == int(''.join(map(str, l))) and sumd > 1:
-                            # print sumd
-                            total += sumd
+                b=0
+                n=str(v)
+                m=0
+                while m < len(n) and b <= v:
+                       b+=int(n[m])**5
+                       m+=1
+                if b == v :
+                      c += v
+print c-1
 
-print total
 # '''
 print time.clock() - start_time
 
