@@ -147,3 +147,16 @@ def divide(numerator, denominator, detect_repetition=True, digit_limit=None):
     if numerator > 0:
         return answer + '...'
     return answer
+
+def permute(s):
+    ''' return a list of permutations of string s '''
+
+    res = []
+    if len(s) == 1:
+        res = [s]
+    else:
+        for i, c in enumerate(s):
+            for perm in permute(s[:i] + s[i+1:]):
+                res += [c + perm]
+
+    return res

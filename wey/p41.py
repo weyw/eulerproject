@@ -15,34 +15,26 @@ in
 import time
 import math
 import sys
+import itertools
 from euler import *
 
 start_time = time.clock()
 ''' '''
 
-l = 98765431
 
 primes_list = []
 primes_set = set()
-p_max = 0
-file_name = "primes1.txt"
-# file_name = ""
+file_name = "primes/primes1.txt"
 
-if file_name != "":
-    with open(file_name) as f:
-        for line in f:
-            primes_list.extend(map(int, (i for i in line.split(" ") if i != '')))
-else:
-    primes_list = prime_sieve(1000000000)
+with open(file_name) as f:
+    for line in f:
+        primes_list.extend(map(int, (i for i in line.split(" ") if i != '')))
+
+primes_set = set(prime_sieve(8000000))
+print max(int(i) for i in permute('1234567')
+    if int(i) in primes_set)
 
 
-# primes_set = set(primes_list)
-for p in primes_list:
-    if len(set(str(p))) == len(str(p)) and set('123456789'[:len(str(p))]) >= set(str(p)):
-        if p > p_max:
-            p_max = p
-
-print p_max
 
 
 # '''
