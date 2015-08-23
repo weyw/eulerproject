@@ -27,19 +27,14 @@ start_time = time.clock()
 top = 1
 bottom = 1
 
-for y in range(12, 100):
-    for x in range(11, y + 1):
-        if not (str(x)[1] == "0" or str(y)[1] == "0" or str(x)[0] == str(y)[0] or str(x)[1] == str(y)[1]) :
-            if str(x)[1] == str(y)[0]:
-                if Fraction(x, y) == Fraction(int(str(x)[0]), int(str(y)[1])):
-                    print x, y, int(str(x)[0]), int(str(y)[1])
-                    top *= int(str(x)[0])
-                    bottom *= int(str(y)[1])
-            if str(x)[0] == str(y)[1]:
-                if Fraction(x, y) == Fraction(int(str(x)[1]), int(str(y)[0])):
-                    print x, y, int(str(x)[1]), int(str(y)[0])
-                    top *= int(str(x)[1])
-                    bottom *= int(str(y)[0])
+for y in range(1, 10):
+    for x in range(1, y + 1):
+        if not x == y:
+            for i in range(1, 10):
+                if Fraction(int(str(x) + str(i)), int(str(i) + str(y))) == Fraction(x, y):
+                    print str(x) + str(i), str(i) + str(y), x, y
+                    top *= x
+                    bottom *= y
 
 print Fraction(top, bottom)
 # '''
