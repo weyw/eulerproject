@@ -10,7 +10,7 @@ Find the sum of all numbers, less than one million, which are palindromic in bas
 
 (Please note that the palindromic number, in either base, may not include leading zeros.)
 
-=
+= 872187
 '''
 
 import time
@@ -18,32 +18,7 @@ import math
 import sys
 from euler import *
 
-def is_palindromic(n):
-    a = str(n)
-    p = len(a)
-    if p % 2 == 0:
-        p = p / 2
-    else:
-        p = p // 2 + 1
 
-    left = a[:p]
-    right = a[-1 * p:]
-    if left != right[::-1]:
-        return False
-
-    b = bin(n)[2:]
-    p = len(b)
-    if p % 2 == 0:
-        p = p / 2
-    else:
-        p = p // 2 + 1
-
-    left = b[:p]
-    right = b[-1 * p:]
-    if left != right[::-1]:
-        return False
-
-    return True
 
 start_time = time.clock()
 ''' '''
@@ -52,8 +27,8 @@ n = 1000
 
 total = 0
 
-for i in range(1, 1000000):
-    if is_palindromic(i):
+for i in range(1, 1000000, 2):
+    if str(i) == str(i)[::-1] and str(bin(i)[2:]) == str(bin(i)[2:])[::-1]:
         total += i
 
 print total
