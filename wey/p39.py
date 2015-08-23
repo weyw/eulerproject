@@ -25,6 +25,8 @@ start_time = time.clock()
 max_count = 0
 max_p = 0
 
+
+
 p = [0] * 1000
 
 for i in range(1, 1000, 2):
@@ -41,6 +43,21 @@ for i in range(1000):
     if p[i] > max_count:
         max_count = p[i]
         max_p = i
+
+
+
+# import itertools, math
+# N = 1000
+# nsol = [0]*N
+# for a in xrange(1, N-N/2):
+#     for b in itertools.count(a+1):
+#         c_squared = a*a + b*b
+#         c = int( math.sqrt( c_squared))
+#         p = a + b + c
+#         if not p < N: break
+#         if c*c == c_squared:
+#             nsol[p] += 1
+# print nsol.index( max( nsol))
 
 
 # for p in range(2, 1000, 2):
