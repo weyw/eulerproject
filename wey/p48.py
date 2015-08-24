@@ -20,8 +20,20 @@ start_time = time.clock()
 ''' '''
 
 t = 0
+d10 = ""
+count = 0
 for n in range(1, 1000):
     t += n ** n
+
+    # if len(str(t)) > 11:
+    #     if d10 != str(t)[-10]:
+    #         d10 = str(t)[-10]
+    #         count = 0
+    #     else:
+    #         if count > 4:
+    #             break
+    #         else:
+    #             count += 1
 
 print str(t)[-10:]
 
