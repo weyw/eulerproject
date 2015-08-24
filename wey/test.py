@@ -5,7 +5,8 @@ from euler import *
 start_time = time.clock()
 ''' '''
 
-
-p = prime_sieve(100000000)
+x = 125478
+s = "".join(sorted(list(str(x))))
+print s
 
 print time.clock() - start_time
