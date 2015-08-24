@@ -3,6 +3,11 @@
 
 from euler import *
 
-n = 3976
+n = 1159
 
-print n * (3 * n - 1) / 2, n * (2 * n - 1)
+for j in range(4):
+    print n + j, set(prime_factors(n + j))
+    # if len(set(prime_factors(n + j))) != 4:
+
+
+print len(set(prime_factors(n)))

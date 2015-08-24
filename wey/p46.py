@@ -28,9 +28,9 @@ from euler import *
 start_time = time.clock()
 ''' '''
 
-n = 10000
-primes_set = sorted(set(prime_sieve(n)))
-for i in range(9, n, 2):
+n = 8000
+primes_set = prime_sieve(n)
+for i in range(9, 10000, 2):
     flag = True
     for p in primes_set:
         if p > i:

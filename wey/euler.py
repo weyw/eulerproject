@@ -23,6 +23,7 @@ def is_prime(m):
 def prime_factors(n):
     ''' return of list of "n's" prime factors '''
 
+    primes_set = set(prime_sieve(n))
     factors = []
     d = 2
     while n % d == 0 :
@@ -32,11 +33,9 @@ def prime_factors(n):
     # now 3
     d = 3
     while d <= n:
-        if is_prime(d) :
-            while n % d == 0 :
-                print(n)
-                factors.append(d)
-                n /= d
+        if d in primes_set :
+            factors.append(d)
+            n /= d
         d += 2
 
     return factors
