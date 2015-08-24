@@ -1,13 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+import time
 from euler import *
-
-n = 1159
-
-for j in range(4):
-    print n + j, set(prime_factors(n + j))
-    # if len(set(prime_factors(n + j))) != 4:
+start_time = time.clock()
+''' '''
 
 
-print len(set(prime_factors(n)))
+p = prime_sieve(100000000)
+
+print time.clock() - start_time
