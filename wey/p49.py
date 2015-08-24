@@ -21,7 +21,7 @@ from euler import *
 start_time = time.clock()
 ''' '''
 
-prime_set = prime_sieve(15000)
+prime_set = prime_sieve(10000)
 found = []
 
 
