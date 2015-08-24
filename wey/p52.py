@@ -20,7 +20,7 @@ from euler import *
 start_time = time.clock()
 ''' '''
 
-for x in range(100000, 1000000):
+for x in range(123456, 1000000):
     s = "".join(sorted(list(str(x))))
 
     # found = True
