@@ -19,7 +19,7 @@ The next three expansions are 99/70, 239/169, and 577/408, but the eighth expans
 
 In the first one-thousand expansions, how many fractions contain a numerator with more digits than denominator?
 
-=
+= 153
 '''
 
 import time
@@ -33,23 +33,16 @@ start_time = time.clock()
 from fractions import Fraction
 from decimal import *
 
-count = 0
+tot = 0
+top = 3
+bot = 2
+
 for i in range(1000):
-    n = Fraction(2) + Fraction(0.5)
-    if i == 0:
-        n = Fraction(2)
-    elif i == 1:
-        pass
-    else:
-        for j in range(1, i):
-            n = Fraction(2) + Fraction(1) / n
+    if int(math.log10(top)) > int(math.log10(bot)):
+        tot += 1
+    bot, top = top + bot, 2 * bot + top
 
-    n = Fraction(1 + Fraction(1) / n)
-    # print n
-    if len(str(n.numerator)) > len(str(n.denominator)):
-        count += 1
-
-print count
+print tot
 
 
 # '''

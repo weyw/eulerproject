@@ -8,8 +8,8 @@ start_time = time.clock()
 from decimal import *
 from fractions import *
 
-x = 122
-n = sum(map(int, list(str(x))))
-print 2 + 0.5
+n = 53471161
+print is_prime(n)
+# print MillerRabinPrimalityTest(n)
 
 print time.clock() - start_time
