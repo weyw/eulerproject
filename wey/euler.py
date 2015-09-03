@@ -4,6 +4,9 @@ import random
 
 def is_prime(m):
     ''' returns True if "m" is prime '''
+
+    if m > 20051686:
+        return MillerRabinPrimalityTest(m)
     if m <= 1 :
         return False
     primes = [1, 2, 3, 5, 7, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
