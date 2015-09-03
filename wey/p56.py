@@ -22,8 +22,8 @@ start_time = time.clock()
 
 max_sum = 0
 
-for a in range(1, 100):
-    for b in range(1, 100):
+for a in range(90, 100):
+    for b in range(90, 100):
         x = a ** b
         n = sum(map(int, list(str(x))))
 
